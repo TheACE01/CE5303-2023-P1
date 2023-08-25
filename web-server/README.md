@@ -1,12 +1,11 @@
 # Smart Home IoT Server
 
-This repository contains a Flask-based server for monitoring and controlling IoT devices in a smart home.
+This folder contains a Flask-based server for monitoring and controlling IoT devices in a smart home.
 
 ## Table of Contents
 
 - [Installation](#installation)
 - [Usage](#usage)
-- [Project Structure](#project-structure)
 - [Dependencies](#dependencies)
 
 ## Installation
@@ -33,24 +32,6 @@ This repository contains a Flask-based server for monitoring and controlling IoT
 
    ```bash
    python run.py
-
-
-## Project Structure
-The project structure follows this layout:
-
-web-server/
-├── app/
-│   ├── static/
-│   │   ├── css/
-│   │   └── js/
-│   ├── templates/
-│   ├── __init__.py
-│   ├── routes.py
-│   └── models.py (if needed)
-├── config.py
-├── run.py
-├── requirements.txt
-└── README.md
 
 ## Dependencies
 All project dependencies are listed in the `requirements.txt` file. To install them, follow the steps in the Installation section.
