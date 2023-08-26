@@ -1,0 +1,42 @@
+# Compiled Python files
+__pycache__/
+*.pyc
+
+# Virtual environment
+venv/
+venv*/
+
+# IDE-specific files
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Local development configuration
+config.py
+
+# Compiled files
+*.pyc
+*.pyo
+*.pyd
+
+# Database files
+*.db
+
+# Static files and media
+static/
+media/
+
+# Environment variables file
+.env
+
+# Compiled UI files
+*.pyc
+*.pyo
+
+# Operating system and temporary files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo

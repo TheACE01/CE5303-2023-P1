@@ -1,6 +1,8 @@
-from flask import render_template, jsonify, request
+from flask import render_template, jsonify, request, send_file, abort
+from os.path import isfile
 from app import app
 from app.utilities.types import *
+import os
 
 @app.route('/')
 def index():
@@ -75,14 +77,35 @@ def turnOffLights():
     return response
 
 #--------------------------------------------------------------------------------------------
-# Route to turn off all lights of the house.
-@app.route('/api/lights/turn-off', methods = ['POST'])
-def turnOffLights():
+# Route to get the house status (doors and lights)
+@app.route('/api/house/status', methods = ['GET'])
+def getHouseStatus():
 
-    # return a good response
     response = jsonify({
-        "status": True,
-        "message": f"All lights turned off successfully"
-    })
+    "lights": {
+        "bedroom1": 1,
+        "bedroom2": 0,
+        "livingRoom": 1,
+        "kitchen": 0,
+        "diningRoom": 0
+    },
+    "doors": {
+        "frontDoor": 1,
+        "backDoor": 2,
+        "bedroomDoor1": 1,
+        "bedroomDoor2": 2
+    }})
+
     return response
+
+#--------------------------------------------------------------------------------------------
+# Route to take a picture of an specific section of the house
+@app.route('/api/house/photo', methods = ['GET'])
+def getHousePhoto():
+
+    image_path = 'camera/example.png'
+
+    return send_file(image_path, mimetype='image/png')
+
+
 
