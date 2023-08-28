@@ -1,23 +1,25 @@
-import logo from './logo.svg';
+import logo from './assets/logo.svg';
 import './App.css';
 import { useAuth0 } from "@auth0/auth0-react";
-import LoginButton from './components/LoginButton';
-import Profile from './components/Profile';
-import LogoutButton from './components/LogoutButton';
 import HomePage from './components/HomePage';
+import LoginPage from './components/LoginPage';
 
 function App() {
   const { isAuthenticated, isLoading } = useAuth0();
 
   if (isLoading) {
-    return <h1>Is Loading</h1>
+    return (
+      <div>
+        <h3>Loading...</h3>
+        <img src={logo} className="App-logo" alt="logo" />
+      </div>
+    );
   }
 
   return (
     <div className="App">
-      <HomePage />
-      {isAuthenticated ? <LogoutButton /> : <LoginButton />}
-    </div>
+      {isAuthenticated ? <HomePage /> : <LoginPage />}
+      </div>
   );
 }
 

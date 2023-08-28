@@ -3,7 +3,12 @@ import Sidebar from "./Sidebar";
 
 
 const HomePage = () => {
-    return ( <Sidebar /> );
+    return ( 
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
+            <Sidebar />
+            <img src={require('../assets/home.jpg')} alt="" />
+        </div>
+    );
 }
  
 export default HomePage;
