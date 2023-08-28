@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  height: 100%;
+  width: 100%;
 }
 
 .App-logo {
@@ -35,4 +37,53 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.Sidebar {
+  height: 100%;
+  width: 250px;
+  background-color: #2F4050;
+}
+
+.SidebarList {
+  height: 100%;
+  padding: 0;
+  width: 100%;
+}
+
+.SidebarList .SidebarRow {
+  width: 100%;
+  height: 60px;
+  list-style-type: none;
+  margin: 0%;
+  display: flex;
+  flex-direction: row;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.SidebarList .SidebarRow:hover{
+  cursor: pointer;
+  background-color: #293846;
+}
+
+.SidebarList #active{
+  background-color: #293846;
+}
+
+.SidebarRow #icon{
+  flex: 30%;
+  display: grid;
+  place-items: center;
+}
+
+.SidebarRow #title{
+  flex: 70%;
+}
+
+.SidebarProfile{
+  padding-top: 100%;
+  color: white;
 }
