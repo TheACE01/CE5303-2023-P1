@@ -1,6 +1,6 @@
 import React from 'react';
 import Sidebar from "./Sidebar";
-import HomeState from './HomeState';
+import HomeStatus from './HomeStatus';
 import LightsSwitch from './LightsSwitch';
 import AddHomeWorkIcon from '@mui/icons-material/AddHomeWork';
 
@@ -13,7 +13,7 @@ const HomePage = () => {
             </div>
             <div className='container'>
                 <Sidebar />
-                <HomeState />
+                <HomeStatus />
                 <div className='Control'>
                 <LightsSwitch
                     key={'10'}
