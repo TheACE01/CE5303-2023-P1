@@ -6,6 +6,7 @@ import SensorDoorOutlinedIcon from '@mui/icons-material/SensorDoorOutlined';
 import LightsSwitch from './LightsSwitch';
 import HomeStateJSON from './HomeState.json'
 import { useFetch } from '../hooks/useFetch';
+import { usePost } from '../hooks/usePost';
 
 const HomeStatus = () => {
 
@@ -13,9 +14,36 @@ const HomeStatus = () => {
     "https://jsonplaceholder.typicode.com/todos/"
   );
 
+  const postData = {
+    title: 'Hello World',
+    body: 'This is the content of the post.',
+    userId: 1,
+  };
+
+  fetch('https://jsonplaceholder.typicode.com/posts', {
+    method: 'POST',
+    body: JSON.stringify({
+      title: 'foo',
+      body: 'bar',
+      userId: 1,
+    }),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+  })
+    .then((response) => response.json())
+    .then((json) => console.log(json));
+
   return (
 
     <div className='home'>
+
+      <ul className="card">
+        {error2 && <li>Error:! {error}</li>}
+        {loading2 && <li>Loading...!</li>}
+        <p>Post created with ID: </p>
+        {data2 && <p>{data2.id}</p>};
+      </ul>
 
       <ul className="card">
         {error && <li>Error: {error}</li>}
