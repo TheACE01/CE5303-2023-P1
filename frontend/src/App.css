@@ -2,6 +2,7 @@
   text-align: center;
   height: 100%;
   width: 100%;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .App-logo {
@@ -39,9 +40,66 @@
   }
 }
 
+.Login {
+  background-color: #2F4050;
+  color: white;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  width: 100vw;
+  height: 100vh;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 17% 66% 17%;
+  width: 100vw;
+  height: 100vh;
+}
+
+.home {
+  position: relative;
+  background-image: url('./assets/home.jpg');
+  background-size: 65%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  width: 100%; 
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.topBar {
+  background-color:rgb(24, 24, 24);
+  width: 100%;
+  height: 50px;
+  margin: 0%;
+  display: flex;
+  flex-direction: row;
+  color: white;
+  justify-content: left;
+  align-items: center;
+}
+
+.Control{
+  background-color:rgb(197, 197, 197);
+  width: 100%;
+  height: 100%;
+  list-style-type: none;
+  margin: 0%;
+  display: flex;
+  flex-direction: row;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+}
+
 .Sidebar {
   height: 100%;
-  width: 250px;
   background-color: #2F4050;
 }
 
@@ -84,6 +142,105 @@
 }
 
 .SidebarProfile{
-  padding-top: 100%;
+  padding-top: 80%;
   color: white;
 }
+
+.icon-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 20px;
+}
+
+.icon {
+  font-size: 36px;
+}
+
+button {
+  padding: 10px;
+  width: fit-content;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+}
+
+.icon {
+  position: absolute;
+}
+
+.icon-1 {
+  top: 57%;
+  left: 22%;
+}
+
+.icon-2 {
+  top: 62%;
+  left: 64%;
+}
+
+.icon-3 {
+  top: 22%;
+  left: 33%;
+}
+
+.icon-4 {
+  top: 22%;
+  left: 64%;
+}
+
+.icon-5 {
+  top: 59%;
+  left: 36%;
+}
+
+.icon-6 {
+  top: 81%;
+  left: 39%;
+}
+
+.icon-7 {
+  top: 7%;
+  left: 65%;
+}
+
+.icon-8 {
+  top: 37%;
+  left: 40%;
+}
+
+.icon-9 {
+  top: 37%;
+  left: 55%;
+}
+
+.switch {
+  position: absolute;
+}
+
+.switch-Kitchen {
+  top: 63%;
+  left: 21%;
+}
+
+.switch-Living {
+  top: 67%;
+  left: 63%;
+}
+
+.switch-GuestsRoom {
+  top: 27%;
+  left: 29%;
+}
+
+.switch-MainRoom {
+  top: 27%;
+  left: 62%;
+}
+
+.switch-Dining {
+  top: 64%;
+  left: 35%;
+}
+
+
