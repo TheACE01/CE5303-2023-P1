@@ -14,10 +14,14 @@ export const usePost = (url, requestData) => {
             },
             body: JSON.stringify(requestData),
         })
-            .then((response) => response.json())
-            .then((data) => setData(data))
-            .then((data) => console.log(data))
-            .catch((error) => setError(error))
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(responseData => setData(responseData))
+            .catch(error => setError(error))
             .finally(() => setLoading(false));
     }, []);
 

@@ -169,47 +169,47 @@ button {
   position: absolute;
 }
 
-.icon-1 {
+.icon-kitchen {
   top: 57%;
   left: 22%;
 }
 
-.icon-2 {
+.icon-livingRoom {
   top: 62%;
   left: 64%;
 }
 
-.icon-3 {
+.icon-bedroom1 {
   top: 22%;
   left: 33%;
 }
 
-.icon-4 {
+.icon-bedroom2 {
   top: 22%;
   left: 64%;
 }
 
-.icon-5 {
+.icon-diningRoom {
   top: 59%;
   left: 36%;
 }
 
-.icon-6 {
+.icon-frontDoor {
   top: 81%;
   left: 39%;
 }
 
-.icon-7 {
+.icon-backDoor {
   top: 7%;
   left: 65%;
 }
 
-.icon-8 {
+.icon-bedroomDoor1 {
   top: 37%;
   left: 40%;
 }
 
-.icon-9 {
+.icon-bedroomDoor2 {
   top: 37%;
   left: 55%;
 }
@@ -218,27 +218,27 @@ button {
   position: absolute;
 }
 
-.switch-Kitchen {
+.switch-kitchen {
   top: 63%;
   left: 21%;
 }
 
-.switch-Living {
+.switch-livingRoom {
   top: 67%;
   left: 63%;
 }
 
-.switch-GuestsRoom {
+.switch-bedroom1 {
   top: 27%;
   left: 29%;
 }
 
-.switch-MainRoom {
+.switch-bedroom2 {
   top: 27%;
   left: 62%;
 }
 
-.switch-Dining {
+.switch-diningRoom {
   top: 64%;
   left: 35%;
 }
