@@ -1,66 +1,132 @@
-import { useFetch } from "../hooks/useFetch";
-import { usePost } from "../hooks/usePost";
-
 const BASE_URL = "/api/";
 
-export const ApiTurnOnLight = async (light) => {
-    const url = BASE_URL + "/light/turn-on";
-    const postData = { lightNumber: light };
-    const { data, loading, error } = usePost(url, postData);
-    return { data, loading, error }
+export const apiTurnOnLight = async (light) => {
+    //const url = BASE_URL + "/light/turn-on";
+    const url = 'https://jsonplaceholder.typicode.com/posts';
+    //const postData = { lightNumber: light };
+    try {
+        const resp = await fetch(url, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                title: light,
+                body: 'bar',
+                userId: 1,
+            })
+        });
+        if (!resp.ok) throw new Error('Ha surgido un error');
+        const respJson = await resp.json();
+        return respJson;
+    } catch (error) {
+        console.log(error);
+        return null
+    }
 }
 
-export const ApiTurnOffLight = async (light) => {
-    const url = BASE_URL + "/light/turn-off";
-    const postData = { lightNumber: light };
-    const { data, loading, error } = usePost(url, postData);
-    return { data, loading, error }
+export const apiTurnOffLight = async (light) => {
+    //const url = BASE_URL + "/light/turn-off";
+    const url = 'https://jsonplaceholder.typicode.com/posts';
+    //const postData = { lightNumber: light };    
+    try {
+        const resp = await fetch(url, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                title: light,
+                body: 'bar',
+                userId: 1,
+            })
+        });
+        if (!resp.ok) throw new Error('Ha surgido un error');
+        const respJson = await resp.json();
+        return respJson;
+    } catch (error) {
+        console.log(error);
+        return null
+    }
 }
 
-
-export const ApiTurnOnAllLights = async () => {
-    const url = BASE_URL + "/lights/turn-on";
-    const postData = {};
-    const { data, loading, error } = usePost(url, postData);
-    return { data, loading, error }
+export const apiTurnOnAllLights = async () => {
+    //const url = BASE_URL + "/lights/turn-on";
+    const url = 'https://jsonplaceholder.typicode.com/posts';
+    try {
+        const resp = await fetch(url, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                title: 'foo',
+                body: 'bar',
+                userId: 1,
+            })
+        });
+        if (!resp.ok) throw new Error('Ha surgido un error');
+        const respJson = await resp.json();
+        return respJson;
+    } catch (error) {
+        console.log(error);
+        return null
+    }
 }
 
-export const ApiTurnOffAllLights = async () => {
-    const url = BASE_URL + "/lights/turn-off";
-    const postData = {};
-    const { data, loading, error } = usePost(url, postData);
-    return { data, loading, error }
+export const apiTurnOffAllLights = async () => {
+    //const url = BASE_URL + "/lights/turn-off";
+    const url = 'https://jsonplaceholder.typicode.com/posts';
+    try {
+        const resp = await fetch(url, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                title: 'foo',
+                body: 'bar',
+                userId: 1,
+            })
+        });
+        if (!resp.ok) throw new Error('Ha surgido un error');
+        const respJson = await resp.json();
+        return respJson;
+    } catch (error) {
+        console.log(error);
+        return null
+    }
 }
 
-
-export const ApiGetHouseStatus = async () => {
-    const url = BASE_URL + "/house/status";
-    const { data, loading, error } = useFetch(url);
-    return { data, loading, error }
+export const apiGetHouseStatus = async () => {
+    //const url = BASE_URL + "/house/status";
+    const url = 'https://jsonplaceholder.typicode.com/posts/2';
+    try {
+        const resp = await fetch(url);
+        if (!resp.ok) throw new Error('Ha surgido un error');
+        const respJson = await resp.json();
+        console.log(respJson)
+        return respJson;
+    } catch (error) {
+        console.log(error);
+        return null
+    }
 }
-
 
 export const apiTakePhoto = async () => {
     const url = BASE_URL + "/house/photo";
-
     try {
         const resp = await fetch(url, {
             method: "GET",
             redirect: "follow",
             cache: 'no-cache',
         })
-
         if (!resp.ok) throw new Error('No se pudo traer la imagen');
-
         const blob = await resp.blob();
-
         const src = URL.createObjectURL(blob);
-
         return src;
-
     } catch (error) {
         console.log(error);
         return null
     }
-
 }

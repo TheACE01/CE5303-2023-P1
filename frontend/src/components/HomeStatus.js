@@ -4,8 +4,31 @@ import SensorDoorSharpIcon from '@mui/icons-material/SensorDoorSharp';
 import SensorDoorOutlinedIcon from '@mui/icons-material/SensorDoorOutlined';
 import LightsSwitch from './LightsSwitch';
 import HomeStateJSON from './HomeStatus.json'
+import { apiGetHouseStatus } from '../services/api'
+import { useState, useEffect } from 'react';
+import { useInterval } from '../hooks/useInterval';
 
 const HomeStatus = () => {
+
+  const [houseStatus, setHouseStatus] = useState(null);
+
+  // Function to fetch and set the house status
+  const fetchHouseStatus = async () => {
+    const status = await apiGetHouseStatus();
+    if (status !== null) {
+      setHouseStatus(status);
+    }
+  };
+
+  // Call the API initially when the component mounts
+  useEffect(() => {
+    fetchHouseStatus();
+  }, []);
+
+  // Use the useInterval hook to call the API every 3 seconds
+  useInterval(() => {
+    fetchHouseStatus();
+  }, 3000);
 
   const iconMapping = {
     light: {
@@ -25,7 +48,7 @@ const HomeStatus = () => {
       console.log(IconComponent);
       return IconComponent ? (
         <IconComponent key={room} fontSize="large"
-          className={`icon icon-${room}`}  />
+          className={`icon icon-${room}`} />
       ) : null;
     });
   }
@@ -33,77 +56,24 @@ const HomeStatus = () => {
   const renderSwitches = (rooms) => {
     return Object.keys(rooms).map((room) => {
       const value = rooms[room];
-      return (<LightsSwitch key={room} room={room} initialState={value}/>);
+      return (<LightsSwitch key={room} room={room} initialState={value} />);
     });
   }
 
   return (
     <div className='home'>
 
-      {renderIcons(HomeStateJSON.lights, 'light')}
-      {renderIcons(HomeStateJSON.doors, 'door')}
+      { renderIcons(HomeStateJSON.lights, 'light') }
+      { renderIcons(HomeStateJSON.doors, 'door') }
+      { renderSwitches(HomeStateJSON.lights) }
 
-      {renderSwitches(HomeStateJSON.lights)}
-      
+      <div>
+        {/* Render the house status data */}
+        {houseStatus && <pre>{JSON.stringify(houseStatus.title, null, 2)}</pre>}
+      </div>
+
     </div>
   );
 };
 
 export default HomeStatus;
-
-/**
- * 
- * 
-{HomeStateJSON.map(item => (
-        <div key={item.id} className={`icon icon-${item.id}`}>
-          {item.type === 'light' && item.state === 'on' && (
-            <LightbulbSharpIcon fontSize="large" />
-          )}
-          {item.type === 'light' && item.state === 'off' && (
-            <LightbulbTwoToneIcon fontSize="large" />
-          )}
-          {item.type === 'door' && item.state === 'on' && (
-            <SensorDoorOutlinedIcon fontSize="large" />
-          )}
-          {item.type === 'door' && item.state === 'off' && (
-            <SensorDoorSharpIcon fontSize="large" />
-          )}
-        </div>
-      ))}
-{HomeStateJSON.filter(item => item.type === 'light')
-        .map(item => (
-          <LightsSwitch
-            key={item.id}
-            room={item.room}
-            initialState={item.state === 'on'}
-          />
-        ))}
-
-
-
-
-
-
-
-
-
-      <ul className="card">
-        {error && <li>Error: {error}</li>}
-        {loading && <li>Loading...</li>}
-        {data?.map((item) => (
-          <div key={item.id} className={`icon icon-${item.id}`}>
-            {item.userId === 1 && item.completed && (
-              <LightbulbSharpIcon fontSize="large" />
-            )}
-            {item.userId === 1 && !item.completed && (
-              <LightbulbTwoToneIcon fontSize="large" />
-            )}
-            {item.userId === 1 && !item.completed && (
-              <SensorDoorOutlinedIcon fontSize="large" />
-            )}
-            {item.userId === 1 && item.completed && (
-              <SensorDoorSharpIcon fontSize="large" />
-            )}
-          </div>))}
-      </ul>
- */

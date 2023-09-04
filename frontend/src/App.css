@@ -146,6 +146,29 @@
   color: white;
 }
 
+.StatusModal{
+  position: fixed;
+  flex-direction: row;
+  bottom: 10px;
+  right: 10px;
+  background-color: #282c34;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  width: 210px;
+}
+
+.modalText{
+  padding-left: 30%;
+  padding-right: 30%;
+}
+
+.modalbutton{
+  align-self: center;
+  padding: 10px;
+}
+
+
 .icon-container {
   display: flex;
   align-items: center;

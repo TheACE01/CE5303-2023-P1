@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import Switch from '@mui/material/Switch';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
-import { apiTurnOnLight, apiTurnOffLight } from '../services/api';
+import { apiTurnOnAllLights, apiTurnOffAllLights } from '../services/api';
 
-const LightsSwitch = ({ room, initialState }) => {
+const ControlBar = ({ initialState }) => {
     const [checked, setChecked] = useState(initialState);
     const [showModal, setShowModal] = useState(false);
     const [modalMessage, setModalMessage] = useState('');
@@ -13,13 +13,13 @@ const LightsSwitch = ({ room, initialState }) => {
         try {
             setChecked(event.target.checked);
             const response = event.target.checked
-                ? await apiTurnOnLight(room)
-                : await apiTurnOffLight(room);
+                ? await apiTurnOnAllLights()
+                : await apiTurnOffAllLights();
             console.log(response);
             if (response) {//&& response.status) {
                 // Successfully turned on/off light, show modal
                 setModalMessage(response.id);
-                console.log(response.id)
+                console.log(checked)
                 setShowModal(true);
 
                 // Hide modal after 3 seconds
@@ -35,14 +35,14 @@ const LightsSwitch = ({ room, initialState }) => {
     };
 
     return (
-        <div className={`switch switch-${room}`}>
+        <div className='Control'>
             <Switch
                 checked={checked}
                 onChange={handleChange}
                 inputProps={{ 'aria-label': 'controlled' }}
                 color="warning"
             />
-            <p>{room}</p>
+            <p>Light Control</p>
 
             {/* Modal */}
             <Modal
@@ -57,7 +57,7 @@ const LightsSwitch = ({ room, initialState }) => {
                         </Modal.Title>
                     </Modal.Header>
                     <Modal.Body className='modalText'>
-                        {modalMessage}
+                        {modalMessage} {checked && "ON"}
                     </Modal.Body>
                     <Modal.Footer>
                         <Button className='modalbutton' variant="secondary" 
@@ -71,4 +71,4 @@ const LightsSwitch = ({ room, initialState }) => {
     );
 };
 
-export default LightsSwitch;
+export default ControlBar;

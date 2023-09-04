@@ -1,8 +1,9 @@
 import React from 'react';
 import Sidebar from "./Sidebar";
 import HomeStatus from './HomeStatus';
-import LightsSwitch from './LightsSwitch';
+import ControlBar from './ControlBar';
 import AddHomeWorkIcon from '@mui/icons-material/AddHomeWork';
+
 
 const HomePage = () => {
     return ( 
@@ -14,13 +15,7 @@ const HomePage = () => {
             <div className='container'>
                 <Sidebar />
                 <HomeStatus />
-                <div className='Control'>
-                <LightsSwitch
-                    key={'10'}
-                    room={'Turn off all lights'}
-                    initialState={'on'}
-                />
-                </div>
+                <ControlBar />
             </div>        
         </div>
         

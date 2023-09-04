@@ -4,7 +4,7 @@
         "bedroom2": 0,
         "livingRoom": 1,
         "kitchen": 0,
-        "diningRoom": 0
+        "diningRoom": 1
     },
     "doors": {
         "frontDoor": 1,
