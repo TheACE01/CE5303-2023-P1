@@ -9,9 +9,13 @@ function App() {
 
   if (isLoading) {
     return (
-      <div>
+      <div className="App">
         <h3>Loading...</h3>
-        <img src={logo} className="App-logo" alt="logo" />
+        <img src={logo} className="App-logo" alt="logo"
+          style={{
+            width: '150px',
+            height: '150px',
+          }} />
       </div>
     );
   }
@@ -19,12 +23,8 @@ function App() {
   return (
     <div className="App">
       {isAuthenticated ? <HomePage /> : <LoginPage />}
-      </div>
+    </div>
   );
 }
-
-//<header className="App-header">
-//<img src={logo} className="App-logo" alt="logo" />
-//</header>
 
 export default App;

@@ -7,7 +7,7 @@ import AddHomeWorkIcon from '@mui/icons-material/AddHomeWork';
 
 const HomePage = () => {
     return ( 
-        <div>
+        <>
             <div className='topBar'>
                 <AddHomeWorkIcon /> 
                 < h2>   SmartHome</h2> 
@@ -16,8 +16,8 @@ const HomePage = () => {
                 <Sidebar />
                 <HomeStatus />
                 <ControlBar />
-            </div>        
-        </div>
+            </div>
+        </>
         
     );
 }

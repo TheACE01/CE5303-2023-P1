@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import Switch from '@mui/material/Switch';
-import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
+import Modal from '@mui/material/Modal';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
 import { apiTurnOnLight, apiTurnOffLight } from '../services/api';
 
 const LightsSwitch = ({ room, initialState }) => {
@@ -40,33 +42,37 @@ const LightsSwitch = ({ room, initialState }) => {
                 checked={checked}
                 onChange={handleChange}
                 inputProps={{ 'aria-label': 'controlled' }}
-                color="warning"
+                
             />
             <p>{room}</p>
 
             {/* Modal */}
-            <Modal
-                className='StatusModal'
-                show={showModal}
-                onHide={() => setShowModal(false)}
-            >
-                <Modal.Dialog>
-                    <Modal.Header>
-                        <Modal.Title className='modalText'>
+            <div>
+                <Modal
+                    open={showModal}
+                    onClose={() => setShowModal(false)}
+                    aria-labelledby="modal-modal-title"
+                    aria-describedby="modal-modal-description"
+                >
+                    <Box className='StatusModal'>
+                        <Typography id="modal-modal-title" variant="h6" component="h2">
                             Light Status
-                        </Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body className='modalText'>
-                        {modalMessage}
-                    </Modal.Body>
-                    <Modal.Footer>
-                        <Button className='modalbutton' variant="secondary" 
-                            onClick={() => setShowModal(false)}>
+                        </Typography>
+                        <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                            {modalMessage} {checked && <p>{room}'s light on</p> }
+                            {!checked && <p>{room}'s light off</p> }
+                        </Typography>
+                        <Button
+                            onClick={() => setShowModal(false)}
+                            variant="contained"
+                            color="warning"
+                            sx={{ mt: 2 }}
+                        >
                             Close
                         </Button>
-                    </Modal.Footer>
-                </Modal.Dialog>
-            </Modal>
+                    </Box>
+                </Modal>
+            </div>
         </div>
     );
 };

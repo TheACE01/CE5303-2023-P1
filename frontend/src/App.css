@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  height: 100%;
+  height: calc(100vh - 50px);
   width: 100%;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
@@ -18,7 +18,7 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -35,6 +35,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -48,6 +49,7 @@
   vertical-align: middle;
   width: 100vw;
   height: 100vh;
+  margin: 0;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
@@ -61,18 +63,20 @@
 .home {
   position: relative;
   background-image: url('./assets/home.jpg');
-  background-size: 65%;
+  background-size: 55%;
   background-repeat: no-repeat;
   background-position: center center;
-  width: 100%; 
-  height: 100%;
+  width: 100%;
+  height: 100vh;
+  margin: 0%;
+  padding: 0;
   justify-content: center;
   align-items: center;
   display: flex;
 }
 
 .topBar {
-  background-color:rgb(24, 24, 24);
+  background-color: rgb(24, 24, 24);
   width: 100%;
   height: 50px;
   margin: 0%;
@@ -83,10 +87,22 @@
   align-items: center;
 }
 
-.Control{
-  background-color:rgb(197, 197, 197);
+.bottomBar{
+  background-color: rgb(24, 24, 24);
   width: 100%;
-  height: 100%;
+  height: 20px;
+  margin: 0%;
+  display: flex;
+  flex-direction: row;
+  color: white;
+  justify-content: left;
+  align-items: center;
+}
+
+.Control {
+  background-color: rgb(197, 197, 197);
+  width: 100%;
+  height: 100vh;
   list-style-type: none;
   margin: 0%;
   display: flex;
@@ -95,11 +111,10 @@
   justify-content: center;
   align-items: center;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-
 }
 
 .Sidebar {
-  height: 100%;
+  height: 100vh;
   background-color: #2F4050;
 }
 
@@ -107,6 +122,7 @@
   height: 100%;
   padding: 0;
   width: 100%;
+  margin: 0;
 }
 
 .SidebarList .SidebarRow {
@@ -122,52 +138,91 @@
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-.SidebarList .SidebarRow:hover{
+.SidebarList .SidebarRow:hover {
   cursor: pointer;
   background-color: #293846;
 }
 
-.SidebarList #active{
+.SidebarList #active {
   background-color: #293846;
 }
 
-.SidebarRow #icon{
+.SidebarRow #icon {
   flex: 30%;
   display: grid;
   place-items: center;
 }
 
-.SidebarRow #title{
+.SidebarRow #title {
   flex: 70%;
 }
 
-.SidebarProfile{
-  padding-top: 80%;
+.SidebarProfile {
+  padding-top: 100%;
   color: white;
 }
 
-.StatusModal{
+.ControlBarRow{
+  padding-bottom: 30%;
+}
+
+.welcome{
+  margin:0;
+  padding: 10%;
+}
+
+.StatusModal {
   position: fixed;
-  flex-direction: row;
   bottom: 10px;
   right: 10px;
   background-color: #282c34;
+  color: white;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: white;
-  width: 210px;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
 }
 
-.modalText{
+.ImageModal {
+  position: fixed;
+  background-color: #282c34;
+  color: white;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+}
+
+
+.modalText {
   padding-left: 30%;
   padding-right: 30%;
 }
 
-.modalbutton{
+.modalbutton {
   align-self: center;
   padding: 10px;
 }
 
+/* Modal.css */
+.modal {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+}
 
 .icon-container {
   display: flex;
@@ -193,48 +248,48 @@ button {
 }
 
 .icon-kitchen {
-  top: 57%;
-  left: 22%;
+  top: 8%;
+  left: -11%;
 }
 
 .icon-livingRoom {
-  top: 62%;
-  left: 64%;
+  top: 14%;
+  left: 28%;
 }
 
 .icon-bedroom1 {
-  top: 22%;
-  left: 33%;
+  top: -26%;
+  left: 14%;
 }
 
 .icon-bedroom2 {
-  top: 22%;
-  left: 64%;
-}
-
-.icon-diningRoom {
-  top: 59%;
-  left: 36%;
-}
-
-.icon-frontDoor {
-  top: 81%;
+  top: -26%;
   left: 39%;
 }
 
+.icon-diningRoom {
+  top: 11%;
+  left: -5%;
+}
+
+.icon-frontDoor {
+  top: 35%;
+  left: -7%;
+}
+
 .icon-backDoor {
-  top: 7%;
-  left: 65%;
+  top: -40%;
+  left: 8%;
 }
 
 .icon-bedroomDoor1 {
-  top: 37%;
-  left: 40%;
+  top: -11%;
+  left: -19%;
 }
 
 .icon-bedroomDoor2 {
-  top: 37%;
-  left: 55%;
+  top: -11%;
+  left: -11%;
 }
 
 .switch {
@@ -243,17 +298,17 @@ button {
 
 .switch-kitchen {
   top: 63%;
-  left: 21%;
+  left: 25%;
 }
 
 .switch-livingRoom {
   top: 67%;
-  left: 63%;
+  left: 57%;
 }
 
 .switch-bedroom1 {
   top: 27%;
-  left: 29%;
+  left: 32%;
 }
 
 .switch-bedroom2 {
@@ -265,5 +320,3 @@ button {
   top: 64%;
   left: 35%;
 }
-
-

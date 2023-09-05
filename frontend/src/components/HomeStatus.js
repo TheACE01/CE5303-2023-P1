@@ -1,3 +1,4 @@
+import IconButton from '@mui/material/IconButton';
 import LightbulbTwoToneIcon from '@mui/icons-material/LightbulbTwoTone';
 import LightbulbSharpIcon from '@mui/icons-material/LightbulbSharp';
 import SensorDoorSharpIcon from '@mui/icons-material/SensorDoorSharp';
@@ -28,7 +29,7 @@ const HomeStatus = () => {
   // Use the useInterval hook to call the API every 3 seconds
   useInterval(() => {
     fetchHouseStatus();
-  }, 3000);
+  }, 10000);
 
   const iconMapping = {
     light: {
@@ -45,10 +46,11 @@ const HomeStatus = () => {
     return Object.keys(iconData).map((room) => {
       const value = iconData[room];
       const IconComponent = iconMapping[type][value] || null;
-      console.log(IconComponent);
       return IconComponent ? (
-        <IconComponent key={room} fontSize="large"
-          className={`icon icon-${room}`} />
+        <IconButton className={`icon icon-${room}`}  aria-label="light" 
+          color="warning">
+          <IconComponent key={room} fontSize="large" />
+        </IconButton>
       ) : null;
     });
   }
@@ -63,9 +65,9 @@ const HomeStatus = () => {
   return (
     <div className='home'>
 
-      { renderIcons(HomeStateJSON.lights, 'light') }
-      { renderIcons(HomeStateJSON.doors, 'door') }
-      { renderSwitches(HomeStateJSON.lights) }
+      {renderIcons(HomeStateJSON.lights, 'light')}
+      {renderIcons(HomeStateJSON.doors, 'door')}
+      {renderSwitches(HomeStateJSON.lights)}
 
       <div>
         {/* Render the house status data */}

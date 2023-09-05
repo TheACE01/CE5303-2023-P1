@@ -4,7 +4,7 @@ import LoginButton from './LoginButton';
 const LoginPage = () => {
     return ( 
         <div className='Login'>
-            <h1>Welcome to SmartHome</h1>
+            <h1 className='welcome'>Welcome to SmartHome</h1>
             <LoginButton /> 
         </div>
     );

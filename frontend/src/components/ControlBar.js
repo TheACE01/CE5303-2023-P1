@@ -1,13 +1,24 @@
 import React, { useState } from 'react';
 import Switch from '@mui/material/Switch';
-import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
-import { apiTurnOnAllLights, apiTurnOffAllLights } from '../services/api';
+import Modal from '@mui/material/Modal';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import image_ from '../assets/home.jpg'
+import CameraAltIcon from '@mui/icons-material/CameraAlt';
+import { apiTakePhoto, apiTurnOnAllLights, apiTurnOffAllLights } from '../services/api';
 
 const ControlBar = ({ initialState }) => {
     const [checked, setChecked] = useState(initialState);
     const [showModal, setShowModal] = useState(false);
     const [modalMessage, setModalMessage] = useState('');
+    const [open, setOpen] = useState(false);
+    const [image, setImage] = useState();
+
+    const onTakePhoto = async () => {
+        const res = await apiTakePhoto();
+        setImage(res);
+    }
 
     const handleChange = async (event) => {
         try {
@@ -36,38 +47,87 @@ const ControlBar = ({ initialState }) => {
 
     return (
         <div className='Control'>
-            <Switch
-                checked={checked}
-                onChange={handleChange}
-                inputProps={{ 'aria-label': 'controlled' }}
-                color="warning"
-            />
-            <p>Light Control</p>
+            <ul className='SidebarList'>
+                <li className='ControlBarRow'>
+                    <h3>Control Bar</h3>
+                </li>
+                <li>
+                    <Switch
+                        checked={checked}
+                        onChange={handleChange}
+                        inputProps={{ 'aria-label': 'controlled' }}
+                        color="warning"
+                    /></li>
+                <li className='ControlBarRow'>
+                    <p>Turn on/off all lights</p>
+                </li>
+                <li className='ControlBarRow'>
+                    <div>
+                        <Button onClick={() => { setOpen(true); onTakePhoto() }}
+                            variant='contained'
+                            startIcon={<CameraAltIcon />}>
+                            Take photo
+                        </Button>
+                        <Modal
+                            open={open}
+                            onClose={() => setOpen(false)}
+                            aria-labelledby="modal-modal-title"
+                            aria-describedby="modal-modal-description"
+                        >
+                            <Box className='ImageModal'>
+                                <Typography id="modal-modal-title" variant="h6" component="h2">
+                                    Photo
+                                </Typography>
+                                <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                                    Surrounding monitoring
+                                </Typography>
+                                <img
+                                    src={image} // Replace with the actual path to your local image
+                                    alt="Local"
+                                    style={{ width: '100%', marginTop: '10px' }}
+                                />
+                                <Button
+                                    onClick={() => setOpen(false)}
+                                    variant="contained"
+                                    color="warning"
+                                    sx={{ mt: 2 }}
+                                >
+                                    Close
+                                </Button>
+                            </Box>
+                        </Modal>
+                    </div>
+                </li>
+            </ul>
 
             {/* Modal */}
-            <Modal
-                className='StatusModal'
-                show={showModal}
-                onHide={() => setShowModal(false)}
-            >
-                <Modal.Dialog>
-                    <Modal.Header>
-                        <Modal.Title className='modalText'>
+            <div>
+                <Modal
+                    open={showModal}
+                    onClose={() => setShowModal(false)}
+                    aria-labelledby="modal-modal-title"
+                    aria-describedby="modal-modal-description"
+                >
+                    <Box className='StatusModal'>
+                        <Typography id="modal-modal-title" variant="h6" component="h2">
                             Light Status
-                        </Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body className='modalText'>
-                        {modalMessage} {checked && "ON"}
-                    </Modal.Body>
-                    <Modal.Footer>
-                        <Button className='modalbutton' variant="secondary" 
-                            onClick={() => setShowModal(false)}>
+                        </Typography>
+                        <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                            {modalMessage} {checked && "All lights turned on"}
+                            {!checked && "All lights turned off"}
+                        </Typography>
+                        <Button
+                            onClick={() => setShowModal(false)}
+                            variant="contained"
+                            color="warning"
+                            sx={{ mt: 2 }}
+                        >
                             Close
                         </Button>
-                    </Modal.Footer>
-                </Modal.Dialog>
-            </Modal>
-        </div>
+                    </Box>
+                </Modal>
+            </div>
+        </div >
     );
 };
 
