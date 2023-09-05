@@ -13,7 +13,7 @@ This folder contains a Flask-based server for monitoring and controlling IoT dev
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/TheACE01/CE5303-2023-P1.git
+   git clone -b web-server https://github.com/TheACE01/CE5303-2023-P1.git
 
 2. Navigate to the project directory:
 
@@ -31,7 +31,7 @@ This folder contains a Flask-based server for monitoring and controlling IoT dev
 1. Start the Flask server
 
    ```bash
-   python run.py
+   python3 run.py
 
 ## Dependencies
 All project dependencies are listed in the `requirements.txt` file. To install them, follow the steps in the Installation section.
