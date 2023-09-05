@@ -1,4 +1,4 @@
-const BASE_URL = "/api/";
+const BASE_URL = "http://10.42.0.48:5000/api/";
 
 export const apiTurnOnLight = async (room) => {
     const url = BASE_URL + "/light/turn-on";
