@@ -43,10 +43,10 @@ int export_pin(int pin) {
     written_bytes = snprintf(buffer, EXPORT_BUFF_LEN, "%d", pin);
     int op_status = write(file_desc, buffer, written_bytes);
     close(file_desc);
-    if(op_status == FAIL) {
+    /*if(op_status == FAIL) {
         print_error("failed to export pin %d", pin);
         return FAIL;
-    }
+    }*/
     return SUCCESS;
 }
 
@@ -57,10 +57,10 @@ int unexport_pin(int pin) {
     written_bytes = snprintf(buffer, EXPORT_BUFF_LEN, "%d", pin);
     int op_status = write(file_desc, buffer, written_bytes);
     close(file_desc);
-    if(op_status == FAIL) {
+    /*if(op_status == FAIL) {
         print_error("failed to unexport pin %d", pin);
         return FAIL;
-    }
+    }*/
     return SUCCESS;
 }
 
