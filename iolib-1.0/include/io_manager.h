@@ -2,9 +2,9 @@
 void print_error(const char *message, ...);
 int get_file_desc(char *path, int mode);
 // Library functions
-int export_pin(int pin);
-int unexport_pin(int pin);
-int set_pin_mode(int pin, int mode);
-int write_digital(int pin, int value);
-int read_digital(int pin);
+int export_command(int pin);
+int unexport_command(int pin);
+int pinMode(int pin, int mode);
+int digitalWrite(int pin, int value);
+int digitalRead(int pin);
 int blink(int pin, float freq, double duration);

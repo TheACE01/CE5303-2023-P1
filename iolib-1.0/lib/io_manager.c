@@ -36,7 +36,7 @@ int get_file_desc(char *path, int mode){
     return file_desc;
 }
 
-int export_pin(int pin) {
+int export_command(int pin) {
     char buffer[EXPORT_BUFF_LEN];
     ssize_t written_bytes;
     int file_desc = open("/sys/class/gpio/export", O_WRONLY);
@@ -50,7 +50,7 @@ int export_pin(int pin) {
     return SUCCESS;
 }
 
-int unexport_pin(int pin) {
+int unexport_command(int pin) {
     char buffer[EXPORT_BUFF_LEN];
     ssize_t written_bytes;
     int file_desc = open("/sys/class/gpio/unexport", O_WRONLY);
@@ -64,7 +64,7 @@ int unexport_pin(int pin) {
     return SUCCESS;
 }
 
-int set_pin_mode(int pin, int mode) {
+int pinMode(int pin, int mode) {
     char gpio_path[ADDR_BUFFER_LEN];
     snprintf(gpio_path, ADDR_BUFFER_LEN, "/sys/class/gpio/gpio%d/direction", pin);
     int file_desc = get_file_desc(gpio_path, O_WRONLY);
@@ -85,7 +85,7 @@ int set_pin_mode(int pin, int mode) {
     return SUCCESS;
 }
 
-int write_digital(int pin, int value) {
+int digitalWrite(int pin, int value) {
     char pin_path[ADDR_BUFFER_LEN];
     snprintf(pin_path, ADDR_BUFFER_LEN, "/sys/class/gpio/gpio%d/value", pin);
     int file_desc = get_file_desc(pin_path, O_WRONLY); 
@@ -104,7 +104,7 @@ int write_digital(int pin, int value) {
     return SUCCESS;
 }
 
-int read_digital(int pin) {
+int digitalRead(int pin) {
     char pin_value_path[PIN_VALUE_LEN];
     snprintf(pin_value_path, PIN_VALUE_LEN, "/sys/class/gpio/gpio%d/value", pin);
     int file_desc = get_file_desc(pin_value_path, O_RDONLY);
@@ -127,9 +127,9 @@ int blink(int pin, float freq, double duration) {
         clock_t start_time = clock();
         float elapsed_time = 0;
         while(elapsed_time < duration){
-            write_digital(pin, HIGH);
+            digitalWrite(pin, HIGH);
             sleep(period);
-            write_digital(pin, LOW);
+            digitalWrite(pin, LOW);
             sleep(period);
             elapsed_time += 2*period;
         }
