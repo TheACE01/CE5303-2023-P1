@@ -4,15 +4,15 @@ port = 5000
 
 pinMap = {
     "lights": {
-        "bedroom1": 15,
+        "bedroom1": 23,
         "bedroom2": 27,
         "livingRoom": 22,
         "kitchen": 5,
         "diningRoom": 6
     },
     "doors": {
-        "frontDoor": 23,
-        "backDoor": 24,
+        "frontDoor": 26,
+        "backDoor": 14,
         "bedroomDoor1": 25,
         "bedroomDoor2": 16
 }}

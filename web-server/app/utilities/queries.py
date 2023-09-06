@@ -37,10 +37,6 @@ def finalize():
         print(f"Finalize {room} at pin {pin}")
         unexport_command(pin)
 
-    for room, pin in values.pinMap["lights"].items():
-        print(f"Finalize {room} at pin {pin}")
-        unexport_command(pin)
-
 #--------------------------------------------------------------------------------------------
 # This function turns on an specific light
 def lightOn(room: str):
@@ -72,7 +68,9 @@ def getLightState(room: str):
 # This function retrieves the state of an specific door
 def getDoorState(room: str):
     pin = values.pinMap["doors"][room]
+    print(f"reading door state from pin {pin}")
     result = digital_read(pin)
+    print(f"And the result is {result}")
     if (result == values.error):
         print("Door Error: {room} in pin {pin} is not available.")
     return result

@@ -1,4 +1,4 @@
-from flask import render_template, jsonify, request, send_file, abort
+from flask import render_template, jsonify, request, send_file
 from app import app
 from app.utilities.queries import *
 from app.utilities.types import *
@@ -23,8 +23,7 @@ def turnOnLight():
     failure = {"status": False, "message": f"Failed to turn on the light of {roomName}"}
 
     # Use the query
-    # result = lightOn(roomName)
-    result = True
+    result = lightOn(roomName)
 
     # Filter the response
     response = success if result else failure
@@ -113,5 +112,14 @@ def getHousePhoto():
     # return the image
     return send_file(image_path)
 
+#--------------------------------------------------------------------------------------------
+# Route to unexport doors pins
+@app.route('/api/doors/finish', methods = ['GET'])
+def finishDoors():
+    finalize()
 
+    # Use the query
+    result = {"result": True}
+
+    return jsonify(result)
 
