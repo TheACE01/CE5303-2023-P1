@@ -4,12 +4,11 @@ import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import image_ from '../assets/home.jpg'
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import { apiTakePhoto, apiTurnOnAllLights, apiTurnOffAllLights } from '../services/api';
 
 const ControlBar = ({ initialState }) => {
-    const [checked, setChecked] = useState(initialState);
+    const [checked, setChecked] = useState(false);
     const [showModal, setShowModal] = useState(false);
     const [modalMessage, setModalMessage] = useState('');
     const [open, setOpen] = useState(false);
@@ -27,7 +26,7 @@ const ControlBar = ({ initialState }) => {
                 ? await apiTurnOnAllLights()
                 : await apiTurnOffAllLights();
             console.log(response);
-            if (response) {//&& response.status) {
+            if (response && response.status) {
                 // Successfully turned on/off light, show modal
                 setModalMessage(response.id);
                 console.log(checked)

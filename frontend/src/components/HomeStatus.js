@@ -4,7 +4,6 @@ import LightbulbSharpIcon from '@mui/icons-material/LightbulbSharp';
 import SensorDoorSharpIcon from '@mui/icons-material/SensorDoorSharp';
 import SensorDoorOutlinedIcon from '@mui/icons-material/SensorDoorOutlined';
 import LightsSwitch from './LightsSwitch';
-import HomeStateJSON from './HomeStatus.json'
 import { apiGetHouseStatus } from '../services/api'
 import { useState, useEffect } from 'react';
 import { useInterval } from '../hooks/useInterval';
@@ -12,6 +11,7 @@ import { useInterval } from '../hooks/useInterval';
 const HomeStatus = () => {
 
   const [houseStatus, setHouseStatus] = useState(null);
+  const seconds = 3;
 
   // Function to fetch and set the house status
   const fetchHouseStatus = async () => {
@@ -29,7 +29,7 @@ const HomeStatus = () => {
   // Use the useInterval hook to call the API every 3 seconds
   useInterval(() => {
     fetchHouseStatus();
-  }, 10000);
+  }, seconds*1000);
 
   const iconMapping = {
     light: {
@@ -65,9 +65,9 @@ const HomeStatus = () => {
   return (
     <div className='home'>
 
-      {renderIcons(HomeStateJSON.lights, 'light')}
-      {renderIcons(HomeStateJSON.doors, 'door')}
-      {renderSwitches(HomeStateJSON.lights)}
+      {houseStatus && renderIcons(houseStatus.lights, 'light')}
+      {houseStatus && renderIcons(houseStatus.doors, 'door')}
+      {houseStatus && renderSwitches(houseStatus.lights)}
 
       <div>
         {/* Render the house status data */}

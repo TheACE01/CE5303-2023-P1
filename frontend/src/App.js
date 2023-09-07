@@ -6,7 +6,7 @@ import LoginPage from './components/LoginPage';
 
 function App() {
   const { isAuthenticated, isLoading } = useAuth0();
-
+  
   if (isLoading) {
     return (
       <div className="App">

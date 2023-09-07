@@ -1,20 +1,15 @@
 const BASE_URL = "http://10.42.0.48:5000/api/";
 
-export const apiTurnOnLight = async (light) => {
-    //const url = BASE_URL + "/light/turn-on";
-    const url = 'https://jsonplaceholder.typicode.com/posts';
-    //const postData = { lightNumber: light };
+export const apiTurnOnLight = async (room) => {
+    const url = BASE_URL + "light/turn-on";
+    const postData = { roomName: room };
     try {
         const resp = await fetch(url, {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({
-                title: light,
-                body: 'bar',
-                userId: 1,
-            })
+            body: JSON.stringify(postData)
         });
         if (!resp.ok) throw new Error('Ha surgido un error');
         const respJson = await resp.json();
@@ -25,21 +20,16 @@ export const apiTurnOnLight = async (light) => {
     }
 }
 
-export const apiTurnOffLight = async (light) => {
-    //const url = BASE_URL + "/light/turn-off";
-    const url = 'https://jsonplaceholder.typicode.com/posts';
-    //const postData = { lightNumber: light };    
+export const apiTurnOffLight = async (room) => {
+    const url = BASE_URL + "light/turn-off";
+    const postData = { roomName: room };
     try {
         const resp = await fetch(url, {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({
-                title: light,
-                body: 'bar',
-                userId: 1,
-            })
+            body: JSON.stringify(postData)
         });
         if (!resp.ok) throw new Error('Ha surgido un error');
         const respJson = await resp.json();
@@ -51,19 +41,14 @@ export const apiTurnOffLight = async (light) => {
 }
 
 export const apiTurnOnAllLights = async () => {
-    //const url = BASE_URL + "/lights/turn-on";
-    const url = 'https://jsonplaceholder.typicode.com/posts';
+    const url = BASE_URL + "lights/turn-on";
     try {
         const resp = await fetch(url, {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({
-                title: 'foo',
-                body: 'bar',
-                userId: 1,
-            })
+            body: JSON.stringify({})
         });
         if (!resp.ok) throw new Error('Ha surgido un error');
         const respJson = await resp.json();
@@ -75,19 +60,14 @@ export const apiTurnOnAllLights = async () => {
 }
 
 export const apiTurnOffAllLights = async () => {
-    //const url = BASE_URL + "/lights/turn-off";
-    const url = 'https://jsonplaceholder.typicode.com/posts';
+    const url = BASE_URL + "lights/turn-off";
     try {
         const resp = await fetch(url, {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({
-                title: 'foo',
-                body: 'bar',
-                userId: 1,
-            })
+            body: JSON.stringify({})
         });
         if (!resp.ok) throw new Error('Ha surgido un error');
         const respJson = await resp.json();
@@ -99,8 +79,7 @@ export const apiTurnOffAllLights = async () => {
 }
 
 export const apiGetHouseStatus = async () => {
-    //const url = BASE_URL + "/house/status";
-    const url = 'https://jsonplaceholder.typicode.com/posts/2';
+    const url = BASE_URL + "/house/status";
     try {
         const resp = await fetch(url);
         if (!resp.ok) throw new Error('Ha surgido un error');
@@ -114,8 +93,7 @@ export const apiGetHouseStatus = async () => {
 }
 
 export const apiTakePhoto = async () => {
-    //const url = BASE_URL + "/house/photo";
-    const url = `https://picsum.photos/300`;
+    const url = BASE_URL + "/house/photo";
     try {
         const resp = await fetch(url, {
             method: "GET",
