@@ -1,0 +1,15 @@
+{
+    "lights": {
+        "bedroom1": 1,
+        "bedroom2": 0,
+        "livingRoom": 1,
+        "kitchen": 0,
+        "diningRoom": 1
+    },
+    "doors": {
+        "frontDoor": 1,
+        "backDoor": 0,
+        "bedroomDoor1": 1,
+        "bedroomDoor2": 0
+    }
+}
